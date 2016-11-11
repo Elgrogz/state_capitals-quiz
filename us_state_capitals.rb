@@ -61,23 +61,16 @@ def question_pair(array)
   @capital = @pair[1].to_s 
 end
 
-def winner
-  if @score_count == 10
-    puts "You win!"
-    @winner = true
-  end
-end
-
 def ask_question
   puts "What is the capital of #{@state}?"
-  answer = gets.chomp.capitalize
-  if answer != "#{@capital}"
+  answer = gets.chomp.downcase
+  if answer != "#{@capital.downcase}"
     puts "wrong"
   else
     puts "correct!"
     @score_count += 1
     expired_questions(@states)
-    print @answered_questions
+   
   end
   winner
 end
@@ -93,7 +86,6 @@ def winner
     @winner = true
   end
 end
-
 
 while @winner == false
   question_pair(@states)
